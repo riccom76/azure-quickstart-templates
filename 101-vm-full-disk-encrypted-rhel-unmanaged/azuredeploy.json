@@ -131,7 +131,7 @@
             "value": "EnableEncryptionFormat"
           },
           "volumeType": {
-            "value": "All"
+            "value": "Data"
           },
           "diskFormatQuery": {
             "value": "[variables('diskFormatQuery')]"
