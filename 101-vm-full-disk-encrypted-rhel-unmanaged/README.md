@@ -1,4 +1,4 @@
-# Deployment of RHEL 7.2 with full disk encryption
+# Deployment of Ubuntu 16.04 with full disk encryption - Managed Disks
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-full-disk-encrypted-rhel-unmanaged%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
@@ -10,7 +10,7 @@
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
-This template creates a fully-encrypted RHEL 7.2 VM in Azure. The VM consists of:
+This template creates a fully-encrypted Ubuntu 16.04 VM in Azure. The VM consists of:
 
 - 30 GB encrypted OS drive.
 - A 200 GB RAID-0 array mounted at `/mnt/raidencrypted`.
