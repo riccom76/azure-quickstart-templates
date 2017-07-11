@@ -130,31 +130,31 @@
                     "dataDisks": [
                         {
                             "name": "[variables('dataDisk1Name')]",
-                            "diskSizeGB": "100",
+                            "diskSizeGB": "10",
                             "lun": 0,
                             "createOption": "Empty"
                         },
                         {
                             "name": "[variables('dataDisk2Name')]",
-                            "diskSizeGB": "100",
+                            "diskSizeGB": "10",
                             "lun": 1,
                             "createOption": "Empty"
                         },
                         {
                             "name": "[variables('dataDisk3Name')]",
-                            "diskSizeGB": "100",
+                            "diskSizeGB": "10",
                             "lun": 2,
                             "createOption": "Empty"
                         },
                         {
                             "name": "[variables('dataDisk4Name')]",
-                            "diskSizeGB": "100",
+                            "diskSizeGB": "10",
                             "lun": 3,
                             "createOption": "Empty"
                         },
                         {
                             "name": "[variables('dataDisk5Name')]",
-                            "diskSizeGB": "100",
+                            "diskSizeGB": "10",
                             "lun": 4,
                             "createOption": "Empty"
                         }
