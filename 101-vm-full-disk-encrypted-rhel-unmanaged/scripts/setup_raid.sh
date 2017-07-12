@@ -10,6 +10,7 @@ DATADISKS=$(lsblk | grep 10G | cut -d' ' -f1 | tr '\n' ' ')
 
 for DISK in $DATADISKS; do
   disksToUse="$disksToUse /dev/$DISK"
+  mkfs.ext4 $DISK
 done
 
 # Create RAID-0 volume
