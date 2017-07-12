@@ -1,15 +1,26 @@
-#!/bin/sh
+#!/bin/bash
+set -xeu
 
-set -e
+numberOfDisks=5
 
-DATADISKS=$(lsblk | grep 100G | cut -d' ' -f1 | tr '\n' ' ')
-DATADISKSFULLNAMES=""
+disksToUse=""
 
-for DISK in $DATADISKS; do
-	DATADISKSFULLNAMES="$DATADISKSFULLNAMES /dev/$DISK"
+for i in $(seq 0 $(($numberOfDisks - 1))); do
+  disksToUse="$disksToUse /dev/data${i}"
 done
 
-noninteractive apt-get install -y mdadm
-mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 $DATADISKSFULLNAMES
+# Create RAID-0 volume
+apt-get install -y mdadm
+mdadm --create /dev/md0 --level=0 --raid-devices=${numberOfDisks} ${disksToUse}
 mkdir -p /etc/mdadm
 mdadm --detail --scan > /etc/mdadm/mdadm.conf
+
+update-initramfs -u
+
+SUCCESS=$(cat /proc/mdstat | grep md0)
+if [ -z "$SUCCESS" ]; then
+  echo "Failed to create data partition on raid array"
+  exit 43
+fi
+
+echo "`date` - Finished setup_raid.sh"
