@@ -2,11 +2,14 @@
 set -xeu
 
 numberOfDisks=5
-
 disksToUse=""
 
-for i in $(seq 0 $(($numberOfDisks - 1))); do
-  disksToUse="$disksToUse /dev/data${i}"
+apt-get install util-linux
+
+DATADISKS=$(lsblk | grep 10G | cut -d' ' -f1 | tr '\n' ' ')
+
+for DISK in $DATADISKS; do
+  disksToUse="$disksToUse /dev/$DISK"
 done
 
 # Create RAID-0 volume
